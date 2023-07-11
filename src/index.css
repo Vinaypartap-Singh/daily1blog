@@ -1,0 +1,34 @@
+@font-face {
+  font-family: playfair;
+  src: url("./assets/font/playfairDisplay.woff2");
+}
+@font-face {
+  font-family: sora;
+  src: url("./assets/font/soraFont.woff2");
+}
+
+body {
+  font-family: sora;
+}
+
+.max-width-content {
+  max-width: 1300px !important;
+  margin: auto !important;
+}
+
+.title {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+.desc {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+button:disabled {
+  background-color: lightgrey !important;
+}
