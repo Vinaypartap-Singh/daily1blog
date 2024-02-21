@@ -1,12 +1,19 @@
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
-import React, { Profiler, useEffect, useState } from "react";
+import React, { Profiler, useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { db, storage } from "../../Firebase";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import JoditEditor from "jodit-react";
+import { useMemo } from "react";
 
 export default function PostBlog() {
   const navigate = useNavigate();
   const userId = localStorage.getItem("userId");
+
+  // States for Jodit Text Editor
+
+  const editor = useRef(null);
+  const [content, setContent] = useState("");
 
   const initialState = {
     title: "",
@@ -96,13 +103,18 @@ export default function PostBlog() {
     setBlogData({ ...blogData, title: e.target.value });
   };
 
-  const handleBlogContent = (e) => {
-    setBlogData({ ...blogData, description: e.target.value });
+  // Jodit Config
+
+  const handleBlogContent = (newContent) => {
+    setContent(newContent);
+    setBlogData({ ...blogData, description: content });
   };
 
   const categoryHandle = (e) => {
     setBlogData({ ...blogData, category: e.target.value });
   };
+
+  console.log(blogData);
 
   const addDataToFirebase = () => {
     if (title && description && category) {
@@ -125,7 +137,7 @@ export default function PostBlog() {
   return (
     <div>
       <div class="bg-grey-lighter min-h-screen flex flex-col">
-        <div class="container max-w-lg mx-auto flex-1 flex flex-col items-center justify-center px-2">
+        <div class="container max-w-3xl mx-auto flex-1 flex flex-col items-center justify-center px-2 mt-20">
           <div class="bg-white px-6 py-8 rounded shadow-md text-black w-full">
             <h1 class="mb-8 text-3xl text-center">Share Your Thoughts</h1>
             <input
@@ -135,16 +147,22 @@ export default function PostBlog() {
               onChange={handleTitle}
             />
 
-            <textarea
+            <JoditEditor
+              ref={editor}
+              value={content}
+              onChange={(newContent) => handleBlogContent(newContent)}
+            />
+
+            {/* <textarea
               type="textarea"
               class="block border border-grey-light w-full h-[200px] p-3 rounded mb-4"
               placeholder="Description"
               onChange={handleBlogContent}
-            />
+            /> */}
 
             <label
               for="countries"
-              class="block mb-2 text-sm font-medium text-gray-900"
+              class="block mb-2 text-sm font-medium text-gray-900 mt-5"
             >
               Select an Category
             </label>
@@ -154,7 +172,7 @@ export default function PostBlog() {
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             >
               {categoryItems.map((items) => {
-                return <option>{items.name}</option>;
+                return <option key={items.name}>{items.name}</option>;
               })}
             </select>
 

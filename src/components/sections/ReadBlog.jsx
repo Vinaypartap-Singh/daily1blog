@@ -75,7 +75,10 @@ export default function ReadBlog() {
                 <p className="text-3xl my-4">
                   <strong>{fblogData.title}</strong>
                 </p>
-                <p className={"leading-8"}>{fblogData.description}</p>
+                <p
+                  dangerouslySetInnerHTML={{ __html: fblogData.description }}
+                  className={"leading-8"}
+                />
               </div>
               <div className="mb-7 mt-7 flex justify-center">
                 <Link

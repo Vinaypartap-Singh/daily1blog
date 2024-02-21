@@ -42,8 +42,15 @@ export default function BlogsSection() {
       <section className="text-gray-600 body-font">
         <div className="container px-5 py-24 mx-auto max-width-content">
           <div className={"flex items-center justify-between"}>
-            <h1 className="mb-10 text-3xl font-bold text-black">Latest Posts</h1>
-            <a href={"/blogs"} className="mb-10 text-orange-400 text-black text-sm inline-flex items-center">View All <svg
+            <h1 className="mb-10 text-3xl font-bold text-black">
+              Latest Posts
+            </h1>
+            <a
+              href={"/blogs"}
+              className="mb-10 text-orange-400 text-black text-sm inline-flex items-center"
+            >
+              View All{" "}
+              <svg
                 className="w-4 h-4 ml-2"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -51,17 +58,21 @@ export default function BlogsSection() {
                 fill="none"
                 stroke-linecap="round"
                 stroke-linejoin="round"
-            >
-              <path d="M5 12h14"></path>
-              <path d="M12 5l7 7-7 7"></path>
-            </svg></a>
+              >
+                <path d="M5 12h14"></path>
+                <path d="M12 5l7 7-7 7"></path>
+              </svg>
+            </a>
           </div>
 
           <div className="flex flex-wrap -m-4">
             {blogs.length === 0 ? (
-                    <div className={"text-center w-full"}>
-                      <h1 className={"text-center text-red-500 tracking-wider"}> Loading........ </h1>
-                    </div>
+              <div className={"text-center w-full"}>
+                <h1 className={"text-center text-red-500 tracking-wider"}>
+                  {" "}
+                  Loading........{" "}
+                </h1>
+              </div>
             ) : (
               blogs.map((data) => {
                 return (
@@ -79,9 +90,10 @@ export default function BlogsSection() {
                         <h1 className="title-font text-lg font-medium text-gray-900 mb-3 title">
                           {data.title}
                         </h1>
-                        <p className="leading-relaxed mb-3 desc">
-                          {data.description}
-                        </p>
+                        <p
+                          dangerouslySetInnerHTML={{ __html: data.description }}
+                          className="leading-relaxed mb-3 desc"
+                        />
                         <div className="flex items-center flex-wrap ">
                           <Link
                             to={`/blog/${data.id}`}

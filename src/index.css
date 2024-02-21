@@ -25,10 +25,14 @@ body {
 .desc {
   overflow: hidden;
   display: -webkit-box;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
 }
 
 button:disabled {
   background-color: lightgrey !important;
+}
+
+.jodit-workplace {
+  height: 400px !important;
 }
