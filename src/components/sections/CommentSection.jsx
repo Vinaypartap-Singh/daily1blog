@@ -78,16 +78,16 @@ export default function CommentSection({ postId }) {
             </h3>
           </div>
           {userId ? (
-            <div class="mb-6">
-              <div class="py-2 px-4 mb-4 bg-white rounded-lg rounded-t-lg border border-gray-200 dark:bg-gray-800 dark:border-gray-700">
-                <label for="comment" class="sr-only">
+            <div classname="mb-6">
+              <div classname="py-2 px-4 mb-4 bg-white rounded-lg rounded-t-lg border border-gray-200 dark:bg-gray-800 dark:border-gray-700">
+                <label for="comment" classname="sr-only">
                   Your comment
                 </label>
                 <textarea
                   onChange={(e) => setComment(e.target.value)}
                   id="comment"
                   rows="6"
-                  class="px-0 w-full text-sm text-gray-900 border-0 focus:ring-0 focus:outline-none dark:text-white dark:placeholder-gray-400 dark:bg-gray-800"
+                  className="px-0 w-full text-sm text-gray-900 border-0 focus:ring-0 focus:outline-none dark:text-white dark:placeholder-gray-400 dark:bg-gray-800"
                   placeholder="Write a comment..."
                   required
                 ></textarea>
@@ -104,8 +104,8 @@ export default function CommentSection({ postId }) {
             <div className="flex items-center justify-center">
               <div role="status">
                 <svg
-                  aria-hidden="true"
-                  class="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
+                  ariaHidden="true"
+                  classname="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
                   viewBox="0 0 100 101"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
@@ -119,7 +119,7 @@ export default function CommentSection({ postId }) {
                     fill="currentFill"
                   />
                 </svg>
-                <span class="sr-only">Loading...</span>
+                <span classname="sr-only">Loading...</span>
               </div>
             </div>
           ) : (
@@ -130,15 +130,15 @@ export default function CommentSection({ postId }) {
                     return (
                       <article
                         key={index}
-                        class="p-6 text-base bg-white rounded-sm dark:bg-gray-900 border-b-2"
+                        classname="p-6 text-base bg-white rounded-sm dark:bg-gray-900 border-b-2"
                       >
-                        <footer class="flex justify-between items-center mb-2">
-                          <div class="flex items-center">
-                            <p class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white font-semibold">
+                        <footer classname="flex justify-between items-center mb-2">
+                          <div classname="flex items-center">
+                            <p classname="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white font-semibold">
                               <UserCheck className="h-4 w-4 text-gray-600 dark:text-gray-400 mr-1" />
                               {data.userName}
                             </p>
-                            <p class="text-sm text-gray-600 dark:text-gray-400">
+                            <p classname="text-sm text-gray-600 dark:text-gray-400">
                               <time
                                 pubdate
                                 datetime={data.timestamp}
@@ -149,7 +149,7 @@ export default function CommentSection({ postId }) {
                             </p>
                           </div>
                         </footer>
-                        <p class="text-gray-500 dark:text-gray-400">
+                        <p classname="text-gray-500 dark:text-gray-400">
                           {data.comment}
                         </p>
                       </article>
