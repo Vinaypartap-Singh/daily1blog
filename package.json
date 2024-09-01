@@ -13,6 +13,7 @@
     "dotenv": "^16.1.4",
     "firebase": "^9.22.2",
     "jodit-react": "^4.0.9",
+    "lucide-react": "^0.437.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.12.1",

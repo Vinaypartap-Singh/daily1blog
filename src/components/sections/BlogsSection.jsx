@@ -5,9 +5,14 @@ import {
   collection,
   deleteDoc,
   doc,
+  increment,
   onSnapshot,
   query,
+  updateDoc,
 } from "firebase/firestore";
+import { ArrowUp10, ArrowDown01 } from "lucide-react";
+import firebase from "firebase/compat/app";
+
 export default function BlogsSection() {
   const [blogs, setBlogs] = useState([]);
 
@@ -15,7 +20,6 @@ export default function BlogsSection() {
 
   useEffect(() => {
     const blogsRef = collection(db, "blogs");
-
     const q = query(blogsRef);
 
     onSnapshot(q, (snapshot) => {
@@ -24,14 +28,44 @@ export default function BlogsSection() {
         ...doc.data(),
       }));
 
-      setBlogs(blogsData);
+      // Sort blogs by total votes (upvotes - downvotes)
+      const sortedBlogs = blogsData.sort((a, b) => {
+        const votesA = (a.upVotes || 0) - (a.downVotes || 0);
+        const votesB = (b.upVotes || 0) - (b.downVotes || 0);
+        return votesB - votesA; // Descending order
+      });
+
+      setBlogs(sortedBlogs);
     });
   }, []);
 
   const deletePost = async (id) => {
     try {
-      window.confirm("Are you sure about deleting this post ?");
-      await deleteDoc(doc(db, "blogs", id));
+      if (window.confirm("Are you sure about deleting this post ?")) {
+        await deleteDoc(doc(db, "blogs", id));
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const upvotePost = async (id) => {
+    try {
+      const blogRef = doc(db, "blogs", id);
+      await updateDoc(blogRef, {
+        upVotes: increment(1),
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const downvotePost = async (id) => {
+    try {
+      const blogRef = doc(db, "blogs", id);
+      await updateDoc(blogRef, {
+        downVotes: increment(-1),
+      });
     } catch (error) {
       console.log(error);
     }
@@ -54,10 +88,10 @@ export default function BlogsSection() {
                 className="w-4 h-4 ml-2"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
-                stroke-width="2"
+                strokeWidth="2"
                 fill="none"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               >
                 <path d="M5 12h14"></path>
                 <path d="M12 5l7 7-7 7"></path>
@@ -104,10 +138,10 @@ export default function BlogsSection() {
                               className="w-4 h-4 ml-2"
                               viewBox="0 0 24 24"
                               stroke="currentColor"
-                              stroke-width="2"
+                              strokeWidth="2"
                               fill="none"
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
                             >
                               <path d="M5 12h14"></path>
                               <path d="M12 5l7 7-7 7"></path>
@@ -120,20 +154,49 @@ export default function BlogsSection() {
                               onClick={() => deletePost(data.id)}
                             >
                               <svg
-                                className="w-4 h-4 mr-1"
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                fill="none"
                                 stroke="currentColor"
                                 stroke-width="2"
-                                fill="none"
                                 stroke-linecap="round"
                                 stroke-linejoin="round"
-                                viewBox="0 0 24 24"
+                                class="lucide lucide-trash-2 h-4 w-4"
                               >
-                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                                <circle cx="12" cy="12" r="3"></circle>
+                                <path d="M3 6h18" />
+                                <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
+                                <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
+                                <line x1="10" x2="10" y1="11" y2="17" />
+                                <line x1="14" x2="14" y1="11" y2="17" />
                               </svg>
-                              Delete Post
                             </button>
                           )}
+
+                          {userId ? (
+                            <div>
+                              <button
+                                className="text-gray-400 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1 border-r-2 border-gray-200"
+                                onClick={() => upvotePost(data.id)}
+                              >
+                                <ArrowUp10 className="h-4 w-4 hover:text-red-500" />
+                                <span className="ml-1">
+                                  {data.upVotes || 0}
+                                </span>
+                              </button>
+
+                              <button
+                                className="text-gray-400 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1 border-r-2 border-gray-200"
+                                onClick={() => downvotePost(data.id)}
+                              >
+                                <ArrowDown01 className="h-4 w-4 hover:text-red-500" />
+                                <span className="ml-1">
+                                  {data.downVotes || 0}
+                                </span>
+                              </button>
+                            </div>
+                          ) : null}
                         </div>
                       </div>
                     </div>
