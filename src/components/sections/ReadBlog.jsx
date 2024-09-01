@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { doc, getDoc, onSnapshot } from "firebase/firestore";
 import { db } from "../../../Firebase";
+import CommentSection from "./CommentSection";
 
 export default function ReadBlog() {
   const { id } = useParams();
@@ -109,6 +110,10 @@ export default function ReadBlog() {
                   </div>
                 </div>
               </div>
+
+              {/* Comments Section */}
+
+              <CommentSection postId={id} />
             </article>
           </div>
         </div>

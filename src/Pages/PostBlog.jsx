@@ -127,6 +127,7 @@ export default function PostBlog() {
           authorID: localStorage.getItem("userId"),
           upVotes: 0,
           downVotes: 0,
+          comments: [],
         });
         alert("Blogs Posted Successfully");
         navigate("/");
