@@ -128,7 +128,7 @@ export default function BlogsSection() {
                           dangerouslySetInnerHTML={{ __html: data.description }}
                           className="leading-relaxed mb-3 desc"
                         />
-                        <div className="flex items-center flex-wrap ">
+                        <div className="flex items-center flex-wrap justify-between">
                           <Link
                             to={`/blog/${data.id}`}
                             className="text-orange-500 inline-flex items-center md:mb-2 lg:mb-0"
@@ -196,7 +196,23 @@ export default function BlogsSection() {
                                 </span>
                               </button>
                             </div>
-                          ) : null}
+                          ) : (
+                            <div className="flex flex-row items-end">
+                              <button className="text-gray-400 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1 border-r-2 border-gray-200">
+                                <ArrowUp10 className="h-4 w-4 hover:text-red-500" />
+                                <span className="ml-1">
+                                  {data.upVotes || 0}
+                                </span>
+                              </button>
+
+                              <button className="text-gray-400 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1 border-r-2 border-gray-200">
+                                <ArrowDown01 className="h-4 w-4 hover:text-red-500" />
+                                <span className="ml-1">
+                                  {data.downVotes || 0}
+                                </span>
+                              </button>
+                            </div>
+                          )}
                         </div>
                       </div>
                     </div>
