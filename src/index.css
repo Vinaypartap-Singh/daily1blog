@@ -40,3 +40,16 @@ button:disabled {
 .jodit-workplace {
   height: 400px !important;
 }
+
+table,
+tr,
+td {
+  border: 1px solid lightgray !important;
+}
+td {
+  padding: 10px;
+}
+
+img {
+  width: 100%;
+}
