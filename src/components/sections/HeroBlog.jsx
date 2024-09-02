@@ -6,7 +6,7 @@ export default function HeroBlog() {
   const navigate = useNavigate();
   return (
     <div className="container mx-auto px-4">
-      <div className="flex flex-wrap items-center -m-6 pt-20 md:pb-36 max-width-content">
+      <div className="flex flex-wrap items-center -m-6 max-width-content">
         <div className="w-full lg:w-1/2 p-6">
           <div className="lg:max-w-xl">
             <p
