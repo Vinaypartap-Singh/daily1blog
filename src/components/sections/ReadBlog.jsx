@@ -40,9 +40,8 @@ export default function ReadBlog() {
         <div className="cstmDiv">
           <div className="container px-8 mx-auto xl:px-5  max-w-screen-lg py-5 lg:py-8 !pt-0">
             <div className="mx-auto max-w-screen-md ">
-              <h1 className="text-brand-primary mb-3 mt-2 text-center text-3xl font-semibold tracking-tight dark:text-white lg:text-4xl lg:leading-snug">
-                Architectural Engineering Wonders of the modern era for your
-                Inspiration
+              <h1 className="text-brand-blue mb-3 mt-6 text-center text-3xl font-semibold tracking-tight lg:text-4xl lg:leading-snug">
+                {fblogData.title}
               </h1>
             </div>
           </div>
@@ -73,7 +72,7 @@ export default function ReadBlog() {
                 <h2 class="bg-orange-400 text-white mt-4 mb-4 w-fit px-5 py-2 tracking-widest text-xs title-font font-medium">
                   {fblogData.category}
                 </h2>
-                <p className="text-3xl my-4">
+                <p className="my-4">
                   <strong>{fblogData.title}</strong>
                 </p>
                 <p
