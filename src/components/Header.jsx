@@ -51,7 +51,6 @@ export default function Header() {
             to={"/"}
             class="flex title-font font-medium items-center text-white mb-4 md:mb-0"
           >
-            <img src={Logo} className={"w-20 h-20 object-fit"} />
             <span class="ml-3 text-xl">Daily 1 Blog</span>
           </Link>
           <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
