@@ -4,7 +4,7 @@ import { UserAuth } from "../context/AuthContext";
 import { signOut } from "firebase/auth";
 import { auth } from "../../Firebase";
 import { useNavigate } from "react-router-dom";
-import Logo from "../assets/Logo.svg"
+import Logo from "../assets/Logo.svg";
 
 export default function Header() {
   var user = localStorage.getItem("user");
@@ -45,7 +45,7 @@ export default function Header() {
 
   return (
     <div>
-      <header class="text-gray-600 body-font sticky top-0 bg-black">
+      <header class="text-gray-600 body-font sticky top-0 bg-black hidden lg:block">
         <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center max-width-content">
           <Link
             to={"/"}

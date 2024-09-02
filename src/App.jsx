@@ -12,12 +12,14 @@ import UploadAuthorProfile from "./Pages/AuthorProfile";
 import AuthorProfileData from "./Pages/AuthorProfileData";
 import BlogsSection from "./components/sections/BlogsSection.jsx";
 import Footer from "./components/Footer.jsx";
+import { MobileNavbar } from "./components/MobileHeader.jsx";
 
 export default function App() {
   return (
     <div>
       <AuthContextProvider>
         <Header />
+        <MobileNavbar />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/signup" element={<SignUp />} />

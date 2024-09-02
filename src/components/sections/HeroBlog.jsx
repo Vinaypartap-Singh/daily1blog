@@ -1,12 +1,12 @@
 import React from "react";
-import {Link, useNavigate} from "react-router-dom";
-import HeroImage from "../../assets/Images/D1BHERO.svg"
+import { Link, useNavigate } from "react-router-dom";
+import HeroImage from "../../assets/Images/D1BHERO.svg";
 
 export default function HeroBlog() {
   const navigate = useNavigate();
   return (
     <div className="container mx-auto px-4">
-      <div className="flex flex-wrap items-center -m-6 pt-20 pb-36 max-width-content">
+      <div className="flex flex-wrap items-center -m-6 pt-20 md:pb-36 max-width-content">
         <div className="w-full lg:w-1/2 p-6">
           <div className="lg:max-w-xl">
             <p
@@ -16,7 +16,7 @@ export default function HeroBlog() {
               Read 1 Blog Daily
             </p>
             <h1
-              className="mb-6 font-heading text-7xl md:text-10xl xl:text-12xl text-gray-900 font-bold"
+              className="mb-6 font-heading text-4xl leading-normal md:text-6xl text-gray-900 font-bold"
               data-config-id="auto-txt-14-2"
             >
               Your Daily Dose of Inspiration
@@ -32,16 +32,21 @@ export default function HeroBlog() {
               richness of life with every click. Welcome to our blog - your
               gateway to endless inspiration.
             </p>
-            <button onClick={() => navigate("/blogs")} className="group relative font-heading px-10 py-5 w-full lg:w-auto uppercase text-white text-xs font-semibold tracking-px bg-orange-400 overflow-hidden rounded-md">
+            <button
+              onClick={() => navigate("/blogs")}
+              className="group relative font-heading px-10 py-5 w-full lg:w-auto uppercase text-white text-xs font-semibold tracking-px bg-orange-400 overflow-hidden rounded-md"
+            >
               <div className="absolute top-0 left-0 transform -translate-x-full group-hover:-translate-x-0 h-full w-full transition ease-in-out duration-500 bg-gray-800"></div>
               <p className="relative z-10" data-config-id="auto-txt-16-2">
                 Read Blogs
               </p>
             </button>
-            <button onClick={() => navigate("/authors")}
+            <button
+              onClick={() => navigate("/authors")}
               className="ml-0 mt-3 sm:mt-0 sm:ml-10 group relative font-heading px-10 py-5 w-full lg:w-auto uppercase text-white text-xs font-semibold tracking-px bg-gray-900 overflow-hidden rounded-md"
             >
-              <button onClick={() => navigate("/authors")}
+              <button
+                onClick={() => navigate("/authors")}
                 className="relative z-10"
                 data-config-id="auto-txt-16-2"
               >
