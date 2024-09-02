@@ -81,7 +81,7 @@ export default function BlogsSection() {
             </h1>
             <a
               href={"/blogs"}
-              className="mb-10 text-orange-400 text-black text-sm inline-flex items-center"
+              className="mb-10 text-orange-400 text-sm inline-flex items-center"
             >
               View All{" "}
               <svg

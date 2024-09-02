@@ -78,9 +78,9 @@ export default function CommentSection({ postId }) {
             </h3>
           </div>
           {userId ? (
-            <div classname="mb-6">
-              <div classname="py-2 px-4 mb-4 bg-white rounded-lg rounded-t-lg border border-gray-200 dark:bg-gray-800 dark:border-gray-700">
-                <label for="comment" classname="sr-only">
+            <div className="mb-6">
+              <div className="py-2 px-4 mb-4 bg-white rounded-lg rounded-t-lg border border-gray-200 dark:bg-gray-800 dark:border-gray-700">
+                <label for="comment" className="sr-only">
                   Your comment
                 </label>
                 <textarea
@@ -105,7 +105,7 @@ export default function CommentSection({ postId }) {
               <div role="status">
                 <svg
                   ariaHidden="true"
-                  classname="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
+                  className="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
                   viewBox="0 0 100 101"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
@@ -119,26 +119,26 @@ export default function CommentSection({ postId }) {
                     fill="currentFill"
                   />
                 </svg>
-                <span classname="sr-only">Loading...</span>
+                <span className="sr-only">Loading...</span>
               </div>
             </div>
           ) : (
             <div>
-              {commentData ? (
+              {commentData.length > 0 ? (
                 <div>
                   {commentData?.map((data, index) => {
                     return (
                       <article
                         key={index}
-                        classname="p-6 text-base bg-white rounded-sm dark:bg-gray-900 border-b-2"
+                        className="p-6 text-base bg-white rounded-sm dark:bg-gray-900 border-b-2"
                       >
-                        <footer classname="flex justify-between items-center mb-2">
-                          <div classname="flex items-center">
-                            <p classname="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white font-semibold">
+                        <footer className="flex justify-between items-center mb-2">
+                          <div className="flex items-center">
+                            <p className="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white font-semibold">
                               <UserCheck className="h-4 w-4 text-gray-600 dark:text-gray-400 mr-1" />
                               {data.userName}
                             </p>
-                            <p classname="text-sm text-gray-600 dark:text-gray-400">
+                            <p className="text-sm text-gray-600 dark:text-gray-400">
                               <time
                                 pubdate
                                 datetime={data.timestamp}
@@ -149,7 +149,7 @@ export default function CommentSection({ postId }) {
                             </p>
                           </div>
                         </footer>
-                        <p classname="text-gray-500 dark:text-gray-400">
+                        <p className="text-gray-500 dark:text-gray-400">
                           {data.comment}
                         </p>
                       </article>
@@ -158,7 +158,14 @@ export default function CommentSection({ postId }) {
                 </div>
               ) : (
                 <div>
-                  <p>No Comments Yet! Be the first one to drop a comment.</p>
+                  <p>
+                    No Comments Yet! Be the first one to drop a comment.
+                    {!userId ? (
+                      <span className="font-bold ml-2">
+                        Login to add a Comment
+                      </span>
+                    ) : null}
+                  </p>
                 </div>
               )}
             </div>

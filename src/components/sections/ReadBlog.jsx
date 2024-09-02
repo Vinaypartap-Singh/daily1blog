@@ -64,7 +64,7 @@ export default function ReadBlog() {
             />
           </div>
           <div className="container px-8 mx-auto xl:px-5  max-w-screen-lg py-5 lg:py-8">
-            <article className="mx-auto max-w-screen-md ">
+            <article className="mx-auto max-w-screen-md">
               <div className="prose mx-auto my-3 dark:prose-invert prose-a:text-blue-600">
                 <Link to={"/about"} className="font-bold">
                   Written by: {authorNameFinal}
