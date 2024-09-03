@@ -18,25 +18,57 @@ export default function BlogsSection() {
 
   const userId = localStorage.getItem("userId");
 
+  // This functions help sorting blogs upVote and downVote method
+
+  // useEffect(() => {
+  //   const blogsRef = collection(db, "blogs");
+  //   const q = query(blogsRef);
+
+  //   onSnapshot(q, (snapshot) => {
+  //     const blogsData = snapshot.docs.map((doc) => ({
+  //       id: doc.id,
+  //       ...doc.data(),
+  //     }));
+
+  //     // Sort blogs by total votes (upvotes - downvotes)
+  //     const sortedBlogs = blogsData.sort((a, b) => {
+  //       const votesA = (a.upVotes || 0) - (a.downVotes || 0);
+  //       const votesB = (b.upVotes || 0) - (b.downVotes || 0);
+  //       return votesB - votesA; // Descending order
+  //     });
+
+  //     setBlogs(sortedBlogs);
+  //   });
+  // }, []);
+
   useEffect(() => {
+    // Reference to your Firestore collection
     const blogsRef = collection(db, "blogs");
     const q = query(blogsRef);
 
-    onSnapshot(q, (snapshot) => {
-      const blogsData = snapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      }));
+    // Subscribe to real-time updates
+    const unsubscribe = onSnapshot(
+      q,
+      (snapshot) => {
+        try {
+          const blogsData = snapshot.docs.map((doc) => ({
+            id: doc.id,
+            ...doc.data(),
+          }));
 
-      // Sort blogs by total votes (upvotes - downvotes)
-      const sortedBlogs = blogsData.sort((a, b) => {
-        const votesA = (a.upVotes || 0) - (a.downVotes || 0);
-        const votesB = (b.upVotes || 0) - (b.downVotes || 0);
-        return votesB - votesA; // Descending order
-      });
+          // Set blogs without sorting
+          setBlogs(blogsData);
+        } catch (error) {
+          console.error("Error fetching blogs: ", error);
+        }
+      },
+      (error) => {
+        console.error("Error with onSnapshot: ", error);
+      }
+    );
 
-      setBlogs(sortedBlogs);
-    });
+    // Cleanup function to unsubscribe from the listener
+    return () => unsubscribe();
   }, []);
 
   const deletePost = async (id) => {
