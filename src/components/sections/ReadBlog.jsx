@@ -69,7 +69,7 @@ export default function ReadBlog() {
                 <Link to={"/about"} className="font-bold">
                   Written by: {authorNameFinal}
                 </Link>
-                <h2 class="bg-orange-400 text-white mt-4 mb-4 w-fit px-5 py-2 tracking-widest text-xs title-font font-medium">
+                <h2 className="bg-orange-400 text-white mt-4 mb-4 w-fit px-5 py-2 tracking-widest text-xs title-font font-medium">
                   {fblogData.category}
                 </h2>
                 <p className="my-4">

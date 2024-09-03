@@ -74,9 +74,9 @@ export function MobileNavbar() {
         >
           <Link
             to={"/"}
-            class="flex title-font font-medium items-center text-black"
+            className="flex title-font font-medium items-center text-black"
           >
-            <span class="ml-3 text-md font-bold">Daily1Blog</span>
+            <span className="ml-3 text-md font-bold">Daily1Blog</span>
           </Link>
         </Typography>
         <div className="hidden lg:block">

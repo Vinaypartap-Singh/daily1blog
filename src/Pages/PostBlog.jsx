@@ -139,13 +139,13 @@ export default function PostBlog() {
 
   return (
     <div>
-      <div class="bg-grey-lighter min-h-screen flex flex-col">
-        <div class="container max-w-3xl mx-auto flex-1 flex flex-col items-center justify-center px-2 mt-20">
-          <div class="bg-white px-6 py-8 rounded shadow-md text-black w-full">
-            <h1 class="mb-8 text-3xl text-center">Share Your Thoughts</h1>
+      <div className="bg-grey-lighter min-h-screen flex flex-col">
+        <div className="container max-w-3xl mx-auto flex-1 flex flex-col items-center justify-center px-2 mt-20">
+          <div className="bg-white px-6 py-8 rounded shadow-md text-black w-full">
+            <h1 className="mb-8 text-3xl text-center">Share Your Thoughts</h1>
             <input
               type="text"
-              class="block border border-grey-light w-full p-3 rounded mb-4"
+              className="block border border-grey-light w-full p-3 rounded mb-4"
               placeholder="Title"
               onChange={handleTitle}
             />
@@ -158,21 +158,21 @@ export default function PostBlog() {
 
             {/* <textarea
               type="textarea"
-              class="block border border-grey-light w-full h-[200px] p-3 rounded mb-4"
+              className="block border border-grey-light w-full h-[200px] p-3 rounded mb-4"
               placeholder="Description"
               onChange={handleBlogContent}
             /> */}
 
             <label
               for="countries"
-              class="block mb-2 text-sm font-medium text-gray-900 mt-5"
+              className="block mb-2 text-sm font-medium text-gray-900 mt-5"
             >
               Select an Category
             </label>
             <select
               onChange={categoryHandle}
               id="countries"
-              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             >
               {categoryItems.map((items) => {
                 return <option key={items.name}>{items.name}</option>;
@@ -191,17 +191,17 @@ export default function PostBlog() {
               onClick={addDataToFirebase}
               style={{ backgroundColor: "#fb923c" }}
               disabled={progress !== null && progress < 100}
-              class="w-full text-center py-3 rounded bg-green text-white hover:bg-green-dark focus:outline-none my-1"
+              className="w-full text-center py-3 rounded bg-green text-white hover:bg-green-dark focus:outline-none my-1"
             >
               Post Blog
             </button>
           </div>
 
-          <div class="text-grey-dark mt-6">
+          <div className="text-grey-dark mt-6">
             Want to boost your content ?
             <Link
               to={"/signup"}
-              class="ml-2 text-orange-400 no-underline border-b border-blue text-blue"
+              className="ml-2 text-orange-400 no-underline border-b border-blue text-blue"
             >
               Get Premium
             </Link>
