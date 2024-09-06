@@ -78,10 +78,10 @@ export default function ReadBlog() {
                 <p className="my-4">
                   <strong>{fblogData.title}</strong>
                 </p>
-                <p
+                {/* <p
                   dangerouslySetInnerHTML={{ __html: fblogData.description }}
                   className={"leading-8"}
-                />
+                /> */}
                 <ReactMarkdown rehypePlugins={[rehypeHighlight]}>
                   {fblogData.description}
                 </ReactMarkdown>
