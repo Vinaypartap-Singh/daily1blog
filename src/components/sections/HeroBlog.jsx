@@ -10,7 +10,7 @@ export default function HeroBlog() {
         <div className="w-full lg:w-1/2 p-6">
           <div className="lg:max-w-xl">
             <p
-              className="mb-8 font-heading max-w-max px-5 py-2.5 uppercase font-semibold text-xs tracking-wider text-indigo-900 bg-gradient-blue2 rounded-full"
+              className="mb-8 font-heading max-w-max px-5 py-2.5 uppercase font-semibold text-xs tracking-wider text-gray-900 bg-gradient-blue2 rounded-full"
               data-config-id="auto-txt-13-2"
             >
               Read 1 Blog Daily

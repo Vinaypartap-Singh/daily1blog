@@ -11,6 +11,7 @@ import {
   updateDoc,
 } from "firebase/firestore";
 import { ArrowUp10, ArrowDown01 } from "lucide-react";
+import ReactMarkdown from "react-markdown";
 
 export default function BlogsSection() {
   const [blogs, setBlogs] = useState([]);
@@ -155,10 +156,13 @@ export default function BlogsSection() {
                         <h1 className="title-font text-lg font-medium text-gray-900 mb-3 title">
                           {data.title}
                         </h1>
-                        <p
+                        {/* <p
                           dangerouslySetInnerHTML={{ __html: data.description }}
                           className="leading-relaxed mb-3 desc"
-                        />
+                        /> */}
+                        <ReactMarkdown className="leading-relaxed mb-3 desc">
+                          {data.description}
+                        </ReactMarkdown>
                         <div className="flex items-center flex-wrap justify-between">
                           <Link
                             to={`/blog/${data.id}`}
