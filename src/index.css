@@ -54,9 +54,20 @@ img {
   width: 100%;
 }
 
-code[class*="language-"],
+/* code[class*="language-"],
 pre[class*="language-"] {
   color: white !important;
   background: none;
   text-shadow: none !important;
+} */
+
+pre {
+  background: none !important;
+}
+
+.hljs {
+  color: #24292e;
+  background: #ffffff;
+  border-radius: 10px !important;
+  border: 1px solid lightgray !important;
 }
