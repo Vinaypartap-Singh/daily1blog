@@ -54,11 +54,9 @@ img {
   width: 100%;
 }
 
-pre {
-  background: black;
-  color: white;
-  border-radius: 10px;
-  padding: 0px 10px;
-  padding-top: 15px;
-  padding-bottom: 5px;
+code[class*="language-"],
+pre[class*="language-"] {
+  color: white !important;
+  background: none;
+  text-shadow: none !important;
 }

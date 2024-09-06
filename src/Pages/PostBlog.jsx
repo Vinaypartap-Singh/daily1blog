@@ -143,22 +143,31 @@ export default function PostBlog() {
         <div className="container max-w-3xl mx-auto flex-1 flex flex-col items-center justify-center px-2 mt-20">
           <div className="bg-white px-6 py-8 rounded shadow-md text-black w-full">
             <h1 className="mb-8 text-3xl text-center">Share Your Thoughts</h1>
+            <label htmlFor="title" className="mb-3 text-gray-900">
+              Blog Title
+            </label>
             <input
               type="text"
-              className="block border border-grey-light w-full p-3 rounded mb-4"
+              className="block border border-grey-light w-full p-3 rounded my-3"
               placeholder="Title"
+              name="title"
               onChange={handleTitle}
             />
 
-            <JoditEditor
+            {/* <JoditEditor
               ref={editor}
               value={content}
               onChange={(newContent) => handleBlogContent(newContent)}
-            />
+            /> */}
 
+            <label htmlFor="description" className="text-gray-900">
+              Blog Description
+            </label>
             <MarkdownEditor
-              onChange={(value, viewUpdate) => {
-                console.log(value);
+              className="my-3 h-96"
+              value={blogData.description}
+              onChange={(value) => {
+                setBlogData({ ...blogData, description: value }); // Update the blogData state
               }}
             />
 
@@ -170,7 +179,7 @@ export default function PostBlog() {
             /> */}
 
             <label
-              for="countries"
+              for="categories"
               className="block mb-2 text-sm font-medium text-gray-900 mt-5"
             >
               Select an Category
@@ -185,10 +194,18 @@ export default function PostBlog() {
               })}
             </select>
 
+            <label
+              for="image"
+              className="block text-sm font-medium text-gray-900 mt-5 mb-4"
+            >
+              Select an Image
+            </label>
+
             <input
               type="file"
+              name="image"
               placeholder="Pick Image"
-              className="block border border-grey-light w-full p-3 rounded mb-4 mt-4"
+              className="block border border-grey-light w-full p-3 rounded mb-4"
               onChange={(e) => setFile(e.target.files[0])}
             />
 
