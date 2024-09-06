@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { db, storage } from "../../Firebase";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import JoditEditor from "jodit-react";
-import { useMemo } from "react";
+import MarkdownEditor from "@uiw/react-markdown-editor";
 
 export default function PostBlog() {
   const navigate = useNavigate();
@@ -154,6 +154,12 @@ export default function PostBlog() {
               ref={editor}
               value={content}
               onChange={(newContent) => handleBlogContent(newContent)}
+            />
+
+            <MarkdownEditor
+              onChange={(value, viewUpdate) => {
+                console.log(value);
+              }}
             />
 
             {/* <textarea
