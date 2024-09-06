@@ -3,6 +3,9 @@ import { Link, useParams } from "react-router-dom";
 import { doc, getDoc, onSnapshot } from "firebase/firestore";
 import { db } from "../../../Firebase";
 import CommentSection from "./CommentSection";
+import ReactMarkdown from "react-markdown"; // Import react-markdown
+import rehypeHighlight from "rehype-highlight"; // Syntax highlighting
+import "highlight.js/styles/github.css"; // Import highlight.js styles
 
 export default function ReadBlog() {
   const { id } = useParams();
@@ -75,10 +78,13 @@ export default function ReadBlog() {
                 <p className="my-4">
                   <strong>{fblogData.title}</strong>
                 </p>
-                <p
+                {/* <p
                   dangerouslySetInnerHTML={{ __html: fblogData.description }}
                   className={"leading-8"}
-                />
+                /> */}
+                <ReactMarkdown rehypePlugins={[rehypeHighlight]}>
+                  {fblogData.description}
+                </ReactMarkdown>
               </div>
               <div className="mb-7 mt-7 flex justify-center">
                 <Link
