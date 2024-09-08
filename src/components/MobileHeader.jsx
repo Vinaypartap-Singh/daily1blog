@@ -84,6 +84,7 @@ export function MobileNavbar() {
             {navItems.map((data, index) => {
               return (
                 <Link
+                  key={index}
                   href={`${data.link}`}
                   className="flex items-center text-black text-sm ml-4 my-3"
                 >
@@ -151,6 +152,7 @@ export function MobileNavbar() {
             {navItems.map((data, index) => {
               return (
                 <Link
+                  key={index}
                   href={`${data.link}`}
                   className="flex items-center text-black text-sm ml-4 my-3"
                 >
