@@ -12,6 +12,7 @@ import {
 } from "firebase/firestore";
 import { ArrowUp10, ArrowDown01 } from "lucide-react";
 import ReactMarkdown from "react-markdown";
+import BlogSkelton from "../Skeleton/BlogSkeleton";
 
 export default function BlogsSection() {
   const [blogs, setBlogs] = useState([]);
@@ -133,12 +134,7 @@ export default function BlogsSection() {
 
           <div className="flex flex-wrap -m-4">
             {blogs.length === 0 ? (
-              <div className={"text-center w-full"}>
-                <h1 className={"text-center text-red-500 tracking-wider"}>
-                  {" "}
-                  Loading........{" "}
-                </h1>
-              </div>
+              <BlogSkelton />
             ) : (
               blogs.map((data) => {
                 return (
