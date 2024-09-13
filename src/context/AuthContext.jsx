@@ -52,7 +52,6 @@ export const AuthContextProvider = ({ children }) => {
         localStorage.setItem("userId", token);
         const user = result.user;
         localStorage.setItem("user", user.email);
-        console.log(user.email);
         alert("Sign In Success");
         navigate("/");
       })

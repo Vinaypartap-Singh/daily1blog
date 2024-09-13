@@ -6,7 +6,7 @@ import {
   query,
   where,
 } from "firebase/firestore";
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useMemo, useState } from "react";
 import { useParams } from "react-router-dom";
 import { db } from "../../Firebase";
 import { Link } from "react-router-dom";
@@ -65,8 +65,6 @@ export default function AuthorProfileData() {
     alert("Loading Data. Loading depend on internet speed.");
     getAuthorBlogs();
   };
-
-  console.log(fetchBlogAuthorName);
 
   return (
     <div>

@@ -19,8 +19,6 @@ export default function ReadBlog() {
     const docSnap = await getDoc(getDocData);
 
     if (docSnap.exists()) {
-      console.log("Document data: ", docSnap.data());
-
       const finalName = docSnap.data().authorName.replace("@gmail.com", "");
       setAuthorNameFinal(finalName);
       setBlogsData(docSnap.data());
