@@ -114,7 +114,7 @@ export default function BlogsSection({ showHeader = false }) {
                 Latest Posts
               </h1>
               <Link
-                href={"/blogs"}
+                to={"/blogs"}
                 className="mb-10 text-orange-400 text-sm inline-flex items-center"
               >
                 View All{" "}
