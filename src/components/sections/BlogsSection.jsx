@@ -14,7 +14,7 @@ import { ArrowUp10, ArrowDown01 } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import BlogSkelton from "../Skeleton/BlogSkeleton";
 
-export default function BlogsSection() {
+export default function BlogsSection({ showHeader = false }) {
   const [blogs, setBlogs] = useState([]);
 
   const userId = localStorage.getItem("userId");
@@ -108,29 +108,31 @@ export default function BlogsSection() {
     <div>
       <section className="text-gray-600 body-font">
         <div className="container px-5 py-24 mx-auto max-width-content">
-          <div className={"flex items-center justify-between"}>
-            <h1 className="mb-10 text-3xl font-bold text-black">
-              Latest Posts
-            </h1>
-            <a
-              href={"/blogs"}
-              className="mb-10 text-orange-400 text-sm inline-flex items-center"
-            >
-              View All{" "}
-              <svg
-                className="w-4 h-4 ml-2"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth="2"
-                fill="none"
-                strokeLinecap="round"
-                strokeLinejoin="round"
+          {showHeader && (
+            <div className={"flex items-center justify-between"}>
+              <h1 className="mb-10 text-3xl font-bold text-black">
+                Latest Posts
+              </h1>
+              <Link
+                href={"/blogs"}
+                className="mb-10 text-orange-400 text-sm inline-flex items-center"
               >
-                <path d="M5 12h14"></path>
-                <path d="M12 5l7 7-7 7"></path>
-              </svg>
-            </a>
-          </div>
+                View All{" "}
+                <svg
+                  className="w-4 h-4 ml-2"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  fill="none"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M5 12h14"></path>
+                  <path d="M12 5l7 7-7 7"></path>
+                </svg>
+              </Link>
+            </div>
+          )}
 
           <div className="flex flex-wrap -m-4">
             {blogs.length === 0 ? (

@@ -6,7 +6,7 @@ export default function HomePage() {
   return (
     <div>
       <HeroBlog />
-      <BlogsSection />
+      <BlogsSection showHeader={true} />
     </div>
   );
 }
