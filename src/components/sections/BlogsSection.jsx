@@ -134,7 +134,7 @@ export default function BlogsSection({ showHeader = false }) {
             </div>
           )}
 
-          <div className="flex flex-wrap -m-4">
+          <div className="flex flex-wrap">
             {blogs.length === 0 ? (
               <BlogSkelton />
             ) : (

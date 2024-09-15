@@ -6,6 +6,25 @@ import { auth } from "../../Firebase";
 import { useNavigate } from "react-router-dom";
 import Logo from "../assets/Logo.svg";
 
+export const navItems = [
+  {
+    name: "Home",
+    link: "/",
+  },
+  {
+    name: "Blogs",
+    link: "/blogs",
+  },
+  {
+    name: "Categories",
+    link: "/categories",
+  },
+  {
+    name: "Authors",
+    link: "/authors",
+  },
+];
+
 export default function Header() {
   var user = localStorage.getItem("user");
   var user = localStorage.getItem("user");
@@ -27,21 +46,6 @@ export default function Header() {
       console.log(error);
     }
   };
-
-  const navItems = [
-    {
-      name: "Home",
-      link: "/",
-    },
-    {
-      name: "Blogs",
-      link: "/blogs",
-    },
-    {
-      name: "Authors",
-      link: "/authors",
-    },
-  ];
 
   return (
     <div className="sticky top-0 z-50">

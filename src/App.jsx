@@ -13,6 +13,8 @@ import AuthorProfileData from "./Pages/AuthorProfileData";
 import BlogsSection from "./components/sections/BlogsSection.jsx";
 import Footer from "./components/Footer.jsx";
 import { MobileNavbar } from "./components/MobileHeader.jsx";
+import CategorySection from "./components/sections/Category.jsx";
+import CategoryItem from "./components/sections/CategoryItem.jsx";
 
 export default function App() {
   return (
@@ -25,6 +27,8 @@ export default function App() {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={<LogIn />} />
           <Route path="/postblog" element={<PostBlog />} />
+          <Route path="/categories" element={<CategorySection />} />
+          <Route path="/category/:id" element={<CategoryItem />} />
           <Route path="/blog/:id" element={<ReadBlog />} />
           <Route path="/blogs" element={<BlogsSection />} />
           <Route

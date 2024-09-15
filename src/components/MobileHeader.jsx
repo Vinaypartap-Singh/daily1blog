@@ -10,6 +10,7 @@ import {
 import { Link, useNavigate } from "react-router-dom";
 import { signOut } from "firebase/auth";
 import { auth } from "../../Firebase";
+import { navItems } from "./Header";
 
 export function MobileNavbar() {
   const [openNav, setOpenNav] = React.useState(false);
@@ -45,21 +46,6 @@ export function MobileNavbar() {
   const navList = (
     <ul className="mt-2 mb-4 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6"></ul>
   );
-
-  const navItems = [
-    {
-      name: "Home",
-      link: "/",
-    },
-    {
-      name: "Blogs",
-      link: "/blogs",
-    },
-    {
-      name: "Authors",
-      link: "/authors",
-    },
-  ];
 
   return (
     <Navbar
@@ -153,7 +139,7 @@ export function MobileNavbar() {
               return (
                 <Link
                   key={index}
-                  href={`${data.link}`}
+                  to={`${data.link}`}
                   className="flex items-center text-black text-sm ml-4 my-3"
                 >
                   {data.name}
