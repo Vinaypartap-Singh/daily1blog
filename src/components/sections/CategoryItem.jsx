@@ -59,8 +59,8 @@ export default function CategoryItem() {
         {loading ? (
           <BlogSkelton />
         ) : blogs.length === 0 ? (
-          <div className="flex flex-col items-center justify-center p-6">
-            <h2 className="text-lg font-semibold text-gray-700 mb-4">
+          <div className="p-6">
+            <h2 className="text-start text-lg font-semibold text-gray-700 mb-4">
               <span className="inline-block text-orange-400">
                 <Album className="size-4" />
               </span>{" "}
