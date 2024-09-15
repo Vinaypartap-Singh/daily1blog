@@ -4,16 +4,7 @@ import { ArrowUp10, ArrowDown01, Album } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import BlogSkelton from "../Skeleton/BlogSkeleton";
 import { Link } from "react-router-dom";
-import {
-  collection,
-  deleteDoc,
-  doc,
-  increment,
-  onSnapshot,
-  query,
-  updateDoc,
-  where,
-} from "firebase/firestore";
+import { collection, onSnapshot, query, where } from "firebase/firestore";
 import { db } from "../../../Firebase";
 
 export default function CategoryItem() {
