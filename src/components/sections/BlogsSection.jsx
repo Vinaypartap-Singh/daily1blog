@@ -7,6 +7,7 @@ import {
   doc,
   increment,
   onSnapshot,
+  orderBy,
   query,
   updateDoc,
 } from "firebase/firestore";
@@ -45,7 +46,7 @@ export default function BlogsSection({ showHeader = false }) {
   useEffect(() => {
     // Reference to your Firestore collection
     const blogsRef = collection(db, "blogs");
-    const q = query(blogsRef);
+    const q = query(blogsRef, orderBy("timestamp", "desc"));
 
     // Subscribe to real-time updates
     const unsubscribe = onSnapshot(
