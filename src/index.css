@@ -25,6 +25,7 @@ body {
   display: -webkit-box;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  font-weight: 700;
 }
 .desc {
   overflow: hidden;
