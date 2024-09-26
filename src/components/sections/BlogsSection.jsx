@@ -82,6 +82,16 @@ export default function BlogsSection({ showHeader = false }) {
     }
   };
 
+  const formatTimestamp = (timestamp) => {
+    const date = new Date(timestamp.seconds * 1000); // Convert seconds to milliseconds
+
+    const month = String(date.getMonth() + 1).padStart(2, "0"); // Get month (0-11) and pad to 2 digits
+    const year = date.getFullYear(); // Get full year
+
+    // Return in the format "MM/YYYY"
+    return `${month}/${year}`;
+  };
+
   return (
     <div>
       <section className="text-gray-600 body-font">
@@ -117,6 +127,12 @@ export default function BlogsSection({ showHeader = false }) {
               <BlogSkelton />
             ) : (
               blogs.map((data) => {
+                {
+                  /* Convert Firestore timestamp to data */
+                }
+
+                const formattedDate = formatTimestamp(data.timestamp);
+
                 return (
                   <div className="p-4 md:w-1/3 w-full" key={data.id}>
                     <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
@@ -139,6 +155,7 @@ export default function BlogsSection({ showHeader = false }) {
                         <ReactMarkdown className="leading-relaxed mb-3 desc">
                           {data.description}
                         </ReactMarkdown>
+                        <p className="text-gray-500 mb-3">{formattedDate}</p>
                         <div className="flex items-center flex-wrap justify-between">
                           <Link
                             to={`/blog/${data.id}`}
