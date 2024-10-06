@@ -83,7 +83,7 @@ export default function BlogsSection({ showHeader = false }) {
   };
 
   const formatTimestamp = (timestamp) => {
-    const date = new Date(timestamp.seconds * 1000); // Convert seconds to milliseconds
+    const date = new Date(timestamp?.seconds * 1000); // Convert seconds to milliseconds
 
     const month = String(date.getMonth() + 1).padStart(2, "0"); // Get month (0-11) and pad to 2 digits
     const year = date.getFullYear(); // Get full year
