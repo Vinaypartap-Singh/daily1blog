@@ -7,7 +7,7 @@ export default function HomePage() {
   return (
     <div>
       <HeroBlog />
-      <CategorySection showHeader={true} />
+      {/* <CategorySection showHeader={true} /> */}
       <BlogsSection showHeader={true} />
     </div>
   );
