@@ -2,7 +2,7 @@ import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { db, storage } from "../../Firebase";
-import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import { doc, serverTimestamp, setDoc } from "firebase/firestore";
 
 export default function UploadAuthorProfile() {
   const initialData = {
@@ -81,10 +81,16 @@ export default function UploadAuthorProfile() {
     if (AuthorName && AuthorInformation && AuthorAim) {
       try {
         alert("Uploading Profile");
-        await addDoc(collection(db, `authors`), {
+
+        // Use `doc` to reference a specific document
+        const authorRef = doc(db, "authors", userId);
+
+        // Use `setDoc` instead of `addDoc` to add data to a specific document
+        await setDoc(authorRef, {
           ...authorData,
           timestamp: serverTimestamp(),
         });
+
         alert("Profile Added Successfully");
         navigate("/");
       } catch (error) {

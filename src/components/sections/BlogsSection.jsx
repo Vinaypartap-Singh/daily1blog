@@ -2,9 +2,11 @@ import React, { useEffect, useState } from "react";
 import { db } from "../../../Firebase";
 import { Link } from "react-router-dom";
 import {
+  arrayUnion,
   collection,
   deleteDoc,
   doc,
+  getDoc,
   increment,
   onSnapshot,
   orderBy,
@@ -63,22 +65,48 @@ export default function BlogsSection({ showHeader = false }) {
   const upvotePost = async (id) => {
     try {
       const blogRef = doc(db, "blogs", id);
-      await updateDoc(blogRef, {
-        upVotes: increment(1),
-      });
+      const blogSnap = await getDoc(blogRef);
+      if (blogSnap.exists()) {
+        const blogData = blogSnap.data();
+        const votedUsers = blogData.votedUsers || [];
+
+        // Check if the user has already voted
+        if (!votedUsers.includes(userId)) {
+          // Allow upvote if the user hasn't voted yet
+          await updateDoc(blogRef, {
+            upVotes: increment(1),
+            votedUsers: arrayUnion(userId), // Add user to the votedUsers array
+          });
+        } else {
+          alert("User has already voted.");
+        }
+      }
     } catch (error) {
-      console.log(error);
+      console.log("Error upvoting:", error);
     }
   };
 
   const downvotePost = async (id) => {
     try {
       const blogRef = doc(db, "blogs", id);
-      await updateDoc(blogRef, {
-        downVotes: increment(-1),
-      });
+      const blogSnap = await getDoc(blogRef);
+      if (blogSnap.exists()) {
+        const blogData = blogSnap.data();
+        const votedUsers = blogData.votedUsers || [];
+
+        // Check if the user has already voted
+        if (!votedUsers.includes(userId)) {
+          // Allow downvote if the user hasn't voted yet
+          await updateDoc(blogRef, {
+            downVotes: increment(1),
+            votedUsers: arrayUnion(userId), // Add user to the votedUsers array
+          });
+        } else {
+          alert("User has already voted.");
+        }
+      }
     } catch (error) {
-      console.log(error);
+      console.log("Error downvoting:", error);
     }
   };
 

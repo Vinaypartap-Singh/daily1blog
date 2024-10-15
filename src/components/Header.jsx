@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { UserAuth } from "../context/AuthContext";
 import { signOut } from "firebase/auth";
-import { auth } from "../../Firebase";
+import { auth, db } from "../../Firebase";
 import { useNavigate } from "react-router-dom";
 import Logo from "../assets/Logo.svg";
+import { doc, getDoc } from "firebase/firestore";
 
 export const navItems = [
   {
@@ -27,8 +28,33 @@ export const navItems = [
 
 export default function Header() {
   var user = localStorage.getItem("user");
-  var user = localStorage.getItem("user");
+  var userId = localStorage.getItem("userId");
+  const [profileExist, setProfileExist] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const checkProfileExistence = async () => {
+      if (!userId) return;
+
+      try {
+        // Get reference to the document in the "profiles" collection using userId
+        const docRef = doc(db, "authors", `${userId}`); // Assuming profiles is the collection name
+        const docSnap = await getDoc(docRef);
+
+        if (docSnap.exists()) {
+          // If the profile exists, set profileExist to true
+          setProfileExist(true);
+        } else {
+          // If the profile doesn't exist, navigate to create profile page or handle as needed
+          setProfileExist(false);
+        }
+      } catch (error) {
+        console.error("Error checking profile existence:", error);
+      }
+    };
+
+    checkProfileExistence();
+  }, [user, userId, navigate]);
 
   const logUserOut = () => {
     try {
@@ -73,12 +99,15 @@ export default function Header() {
 
           {user && (
             <>
-              <Link
-                to={"/createauthorprofile"}
-                className="mr-5 inline-flex text-white hover:border-transparent items-center py-1 px-3 hover:bg-orange-600 hover:text-white rounded text-base mt-4 md:mt-0"
-              >
-                Create Profile
-              </Link>
+              {!profileExist && (
+                <Link
+                  to={"/createauthorprofile"}
+                  className="mr-5 inline-flex text-white hover:border-transparent items-center py-1 px-3 hover:bg-orange-600 hover:text-white rounded text-base mt-4 md:mt-0"
+                >
+                  Create Profile
+                </Link>
+              )}
+
               <Link
                 to={"/postblog"}
                 className="mr-5 inline-flex border border-orange-400 bg-orange-400 text-white hover:border-transparent items-center py-1 px-3 hover:bg-orange-600 hover:text-white rounded text-base mt-4 md:mt-0"
