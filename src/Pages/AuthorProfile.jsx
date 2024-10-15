@@ -9,6 +9,7 @@ export default function UploadAuthorProfile() {
     AuthorName: "",
     AuthorInformation: "",
     AuthorAim: "",
+    AuthorEmail: localStorage?.getItem("user"),
   };
 
   const userId = localStorage.getItem("userId");

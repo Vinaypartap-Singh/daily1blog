@@ -20,10 +20,6 @@ export const navItems = [
     name: "Categories",
     link: "/categories",
   },
-  {
-    name: "Authors",
-    link: "/authors",
-  },
 ];
 
 export default function Header() {
