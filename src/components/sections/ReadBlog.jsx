@@ -38,7 +38,7 @@ export default function ReadBlog() {
           <p className="text-3xl font-bold">Loading Data Please Wait</p>
         </div>
       ) : (
-        <div className="cstmDiv">
+        <div className="cstmDiv md:mt-20">
           <div className="container px-8 mx-auto xl:px-5  max-w-screen-lg py-5 lg:py-8 !pt-0">
             <div className="mx-auto max-w-screen-md ">
               <h1 className="text-brand-blue mb-3 mt-6 text-center text-3xl font-semibold tracking-tight lg:text-4xl lg:leading-snug">
@@ -67,9 +67,9 @@ export default function ReadBlog() {
           <div className="container px-8 mx-auto xl:px-5  max-w-screen-lg py-5 lg:py-8">
             <article className="mx-auto max-w-screen-md">
               <div className="prose mx-auto my-3 dark:prose-invert prose-a:text-blue-600">
-                <Link to={"/about"} className="font-bold">
+                <p className="font-bold text-blue-500 underline">
                   Written by: {authorNameFinal}
-                </Link>
+                </p>
                 <h2 className="bg-orange-400 text-white mt-4 mb-4 w-fit px-5 py-2 tracking-widest text-xs title-font font-medium">
                   {fblogData.category}
                 </h2>
@@ -92,7 +92,7 @@ export default function ReadBlog() {
                   ← View all posts
                 </Link>
               </div>
-              <div className="mt-3 rounded-2xl bg-gray-50 px-8 py-8 text-gray-500 dark:bg-gray-900 dark:text-gray-400">
+              {/* <div className="mt-3 rounded-2xl bg-gray-50 px-8 py-8 text-gray-500 dark:bg-gray-900 dark:text-gray-400">
                 <div className="flex flex-wrap items-start sm:flex-nowrap sm:space-x-6">
                   <div>
                     <div className="mb-3">
@@ -112,7 +112,7 @@ export default function ReadBlog() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> */}
 
               {/* Comments Section */}
 
