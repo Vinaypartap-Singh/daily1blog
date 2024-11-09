@@ -168,6 +168,7 @@ export default function BlogsSection({ showHeader = false }) {
                         className="h-48 md:h-36 w-full object-cover object-center"
                         src={data.imgURL}
                         alt="blog"
+                        loading="lazy"
                       />
                       <div className="p-6">
                         <h2 className="bg-orange-400 text-white mb-4 w-fit px-5 py-2 tracking-widest text-xs title-font font-medium ">
