@@ -98,7 +98,11 @@ export default function CommentSection({ postId }) {
         <div className="w-full">
           <div className="mb-3">
             <h3 className="text-lg font-medium text-gray-800 dark:text-gray-300">
-              Comments
+              {userId ? (
+                <span className="text-sm">Comments</span>
+              ) : (
+                <span className="text-sm">Login To Add Comment</span>
+              )}
             </h3>
           </div>
           {userId ? (
