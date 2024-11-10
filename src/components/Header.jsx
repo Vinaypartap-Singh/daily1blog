@@ -96,14 +96,14 @@ export default function Header() {
 
           {user && (
             <>
-              {!profileExist && (
+              {/* {!profileExist && (
                 <Link
                   to={"/createauthorprofile"}
                   className="mr-5 inline-flex text-white hover:border-transparent items-center py-1 px-3 hover:bg-orange-600 hover:text-white rounded text-base mt-4 md:mt-0"
                 >
                   Create Profile
                 </Link>
-              )}
+              )} */}
 
               <Link
                 to={"/postblog"}
