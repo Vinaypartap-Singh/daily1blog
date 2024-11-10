@@ -16,6 +16,7 @@ import {
 import { ArrowUp10, ArrowDown01 } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import BlogSkelton from "../Skeleton/BlogSkeleton";
+import { toast } from "react-toastify";
 
 export default function BlogsSection({ showHeader = false }) {
   const [blogs, setBlogs] = useState([]);
@@ -78,7 +79,7 @@ export default function BlogsSection({ showHeader = false }) {
             votedUsers: arrayUnion(userId), // Add user to the votedUsers array
           });
         } else {
-          alert("User has already voted.");
+          toast("User has already voted.");
         }
       }
     } catch (error) {
@@ -102,7 +103,7 @@ export default function BlogsSection({ showHeader = false }) {
             votedUsers: arrayUnion(userId), // Add user to the votedUsers array
           });
         } else {
-          alert("User has already voted.");
+          toast("User has already voted.");
         }
       }
     } catch (error) {

@@ -6,6 +6,7 @@ import { auth, db } from "../../Firebase";
 import { useNavigate } from "react-router-dom";
 import Logo from "../assets/Logo.svg";
 import { doc, getDoc } from "firebase/firestore";
+import { toast } from "react-toastify";
 
 export const navItems = [
   {
@@ -56,7 +57,7 @@ export default function Header() {
     try {
       signOut(auth)
         .then(() => {
-          alert("Redirected To Home");
+          toast("Redirected To Home");
           navigate("/");
           window.location.reload();
         })

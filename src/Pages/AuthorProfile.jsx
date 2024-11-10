@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { db, storage } from "../../Firebase";
 import { doc, serverTimestamp, setDoc } from "firebase/firestore";
+import { toast } from "react-toastify";
 
 export default function UploadAuthorProfile() {
   const initialData = {
@@ -81,7 +82,7 @@ export default function UploadAuthorProfile() {
   const addAuthor = async () => {
     if (AuthorName && AuthorInformation && AuthorAim) {
       try {
-        alert("Uploading Profile");
+        toast("Uploading Profile");
 
         // Use `doc` to reference a specific document
         const authorRef = doc(db, "authors", userId);
@@ -92,7 +93,7 @@ export default function UploadAuthorProfile() {
           timestamp: serverTimestamp(),
         });
 
-        alert("Profile Added Successfully");
+        toast("Profile Added Successfully");
         navigate("/");
       } catch (error) {
         console.log(error);

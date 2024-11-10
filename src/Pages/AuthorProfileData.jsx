@@ -10,6 +10,7 @@ import React, { useMemo, useState } from "react";
 import { useParams } from "react-router-dom";
 import { db } from "../../Firebase";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 export default function AuthorProfileData() {
   const { id } = useParams();
@@ -45,7 +46,7 @@ export default function AuthorProfileData() {
       setAuthorProfile(docSnap.data());
       setFetchBlogAuthorName(docSnap.data().AuthorEmail);
     } else {
-      alert("Profile Not Found");
+      toast("Profile Not Found");
     }
   };
 
@@ -62,7 +63,7 @@ export default function AuthorProfileData() {
   }, [setFetchBlogAuthorName]);
 
   const authorBlogBtnClick = () => {
-    alert("Loading Data. Loading depend on internet speed.");
+    toast("Loading Data. Loading depend on internet speed.");
     getAuthorBlogs();
   };
 

@@ -9,6 +9,7 @@ import {
   GoogleAuthProvider,
 } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const UserContext = createContext();
 
@@ -20,12 +21,12 @@ export const AuthContextProvider = ({ children }) => {
   const createUser = async (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        alert("Account Created Successfully");
+        toast("Account Created Successfully");
         navigate("/login");
       })
       .catch((error) => {
         const errorMessage = error.message;
-        alert(errorMessage);
+        toast(errorMessage);
       });
   };
 
@@ -34,13 +35,13 @@ export const AuthContextProvider = ({ children }) => {
       .then((userCredential) => {
         localStorage.setItem("user", userCredential.user.email);
         localStorage.setItem("userId", userCredential.user.uid);
-        alert("Account Logged In Successfully");
+        toast("Account Logged In Successfully");
         navigate("/");
         // ...
       })
       .catch((error) => {
         const errorMessage = error.message;
-        alert(errorMessage);
+        toast(errorMessage);
       });
   };
 
@@ -52,7 +53,7 @@ export const AuthContextProvider = ({ children }) => {
         localStorage.setItem("userId", token);
         const user = result.user;
         localStorage.setItem("user", user.email);
-        alert("Sign In Success");
+        toast("Sign In Success");
         navigate("/");
       })
       .catch((error) => {

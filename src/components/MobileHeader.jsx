@@ -11,6 +11,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { signOut } from "firebase/auth";
 import { auth } from "../../Firebase";
 import { navItems } from "./Header";
+import { toast } from "react-toastify";
 
 export function MobileNavbar() {
   const [openNav, setOpenNav] = React.useState(false);
@@ -30,7 +31,7 @@ export function MobileNavbar() {
     try {
       signOut(auth)
         .then(() => {
-          alert("Redirected To Home");
+          toast("Redirected To Home");
           navigate("/");
           window.location.reload();
         })

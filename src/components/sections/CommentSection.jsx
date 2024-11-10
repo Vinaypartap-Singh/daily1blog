@@ -1,7 +1,8 @@
 import { doc, getDoc, onSnapshot, updateDoc } from "firebase/firestore";
-import { Heart, UserCheck } from "lucide-react";
+import { Heart, MessageCircle, UserCheck } from "lucide-react";
 import { useEffect, useState } from "react";
 import { db } from "../../../Firebase";
+import { toast } from "react-toastify";
 
 export default function CommentSection({ postId }) {
   const userId = localStorage.getItem("userId");
@@ -35,7 +36,7 @@ export default function CommentSection({ postId }) {
 
   const addComment = async () => {
     if (!postId) {
-      alert("Looking For Blog to be loaded");
+      toast("Looking For Blog to be loaded");
     }
 
     const docRef = doc(db, "blogs", `${postId}`);
@@ -57,7 +58,9 @@ export default function CommentSection({ postId }) {
         comments: existingComments,
       });
 
-      alert("Comment added successfully!");
+      setComment("");
+
+      toast("Comment Added Successfully");
     } else {
       alert("No such document!");
     }
@@ -89,6 +92,7 @@ export default function CommentSection({ postId }) {
                   rows="6"
                   className="px-0 w-full text-sm text-gray-900 border-0 focus:ring-0 focus:outline-none dark:text-white dark:placeholder-gray-400 dark:bg-gray-800"
                   placeholder="Write a comment..."
+                  value={comment}
                   required
                 ></textarea>
               </div>

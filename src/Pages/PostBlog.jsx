@@ -5,6 +5,7 @@ import { db, storage } from "../../Firebase";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import JoditEditor from "jodit-react";
 import MarkdownEditor from "@uiw/react-markdown-editor";
+import { toast } from "react-toastify";
 
 export default function PostBlog() {
   const navigate = useNavigate();
@@ -77,7 +78,7 @@ export default function PostBlog() {
             break;
 
           case "success":
-            alert("Image Uploaded");
+            toast("Image Uploaded");
             break;
 
           default:
@@ -119,7 +120,7 @@ export default function PostBlog() {
   const addDataToFirebase = () => {
     if (title && description && category) {
       try {
-        alert("Posting Blog");
+        toast("Posting Blog");
         addDoc(collection(db, `blogs`), {
           ...blogData,
           timestamp: serverTimestamp(),
@@ -129,7 +130,7 @@ export default function PostBlog() {
           downVotes: 0,
           comments: [],
         });
-        alert("Blogs Posted Successfully");
+        toast("Blogs Posted Successfully");
         navigate("/");
       } catch (error) {
         console.log(error);
