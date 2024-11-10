@@ -1,5 +1,5 @@
 import { doc, getDoc, onSnapshot, updateDoc } from "firebase/firestore";
-import { Heart, MessageCircle, UserCheck } from "lucide-react";
+import { Heart, MessageCircle, UserCheck, Trash } from "lucide-react"; // Import the Trash icon
 import { useEffect, useState } from "react";
 import { db } from "../../../Firebase";
 import { toast } from "react-toastify";
@@ -37,6 +37,7 @@ export default function CommentSection({ postId }) {
   const addComment = async () => {
     if (!postId) {
       toast("Looking For Blog to be loaded");
+      return;
     }
 
     const docRef = doc(db, "blogs", `${postId}`);
@@ -66,11 +67,31 @@ export default function CommentSection({ postId }) {
     }
   };
 
+  const deleteComment = async (indexToDelete) => {
+    const docRef = doc(db, "blogs", postId);
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.exists()) {
+      const comments = docSnap.data().comments || [];
+
+      // Filter out the comment to delete by index
+      const updatedComments = comments.filter(
+        (_, index) => index !== indexToDelete
+      );
+
+      await updateDoc(docRef, {
+        comments: updatedComments,
+      });
+
+      toast("Comment Deleted Successfully");
+    }
+  };
+
   const formatTimestamp = (timestamp) => {
     const date = new Date(timestamp);
     return date.toLocaleDateString() + " " + date.toLocaleTimeString();
   };
-  //   console.log(userName.replace("@gmail.com", ""), userId); Example Code
+
   return (
     <div className="mt-3 rounded-2xl bg-gray-50 px-8 py-8 text-gray-500 dark:bg-gray-900 dark:text-gray-400">
       <div className="flex flex-wrap items-start sm:flex-nowrap sm:space-x-6">
@@ -83,7 +104,7 @@ export default function CommentSection({ postId }) {
           {userId ? (
             <div className="mb-6">
               <div className="py-2 px-4 mb-4 bg-white rounded-lg rounded-t-lg border border-gray-200 dark:bg-gray-800 dark:border-gray-700">
-                <label for="comment" className="sr-only">
+                <label htmlFor="comment" className="sr-only">
                   Your comment
                 </label>
                 <textarea
@@ -108,7 +129,7 @@ export default function CommentSection({ postId }) {
             <div className="flex items-center justify-center">
               <div role="status">
                 <svg
-                  ariaHidden="true"
+                  aria-hidden="true"
                   className="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
                   viewBox="0 0 100 101"
                   fill="none"
@@ -130,7 +151,7 @@ export default function CommentSection({ postId }) {
             <div>
               {commentData.length > 0 ? (
                 <div>
-                  {commentData?.map((data, index) => {
+                  {commentData.map((data, index) => {
                     return (
                       <article
                         key={index}
@@ -144,14 +165,22 @@ export default function CommentSection({ postId }) {
                             </p>
                             <p className="text-sm text-gray-600 dark:text-gray-400">
                               <time
-                                pubdate
-                                datetime={data.timestamp}
+                                dateTime={data.timestamp}
                                 title={formatTimestamp(data.timestamp)}
                               >
                                 {formatTimestamp(data.timestamp)}
                               </time>
                             </p>
                           </div>
+                          {data.userId === userId && (
+                            <button
+                              onClick={() => deleteComment(index)}
+                              className="inline-flex items-center px-2 py-1 text-xs text-red-600 hover:text-red-800 dark:text-red-400 dark:hover:text-red-600"
+                              title="Delete comment"
+                            >
+                              <Trash className="h-4 w-4" />
+                            </button>
+                          )}
                         </footer>
                         <p className="text-gray-500 dark:text-gray-400">
                           {data.comment}
@@ -161,16 +190,7 @@ export default function CommentSection({ postId }) {
                   })}
                 </div>
               ) : (
-                <div>
-                  <p>
-                    No Comments Yet! Be the first one to drop a comment.
-                    {!userId ? (
-                      <span className="font-bold ml-2">
-                        Login to add a Comment
-                      </span>
-                    ) : null}
-                  </p>
-                </div>
+                <p>No comments yet.</p>
               )}
             </div>
           )}
