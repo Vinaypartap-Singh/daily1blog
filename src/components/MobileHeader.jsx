@@ -152,9 +152,9 @@ export function MobileNavbar() {
           <div className="flex items-center justify-between gap-x-1">
             {user && (
               <>
-                <Button size="sm" variant="outlined">
+                {/* <Button size="sm" variant="outlined">
                   <Link to={"/createauthorprofile"}>Create Profile</Link>
-                </Button>
+                </Button> */}
                 <Button size="sm" variant="outlined">
                   <Link to={"/postblog"}>Post a Blog</Link>
                 </Button>
