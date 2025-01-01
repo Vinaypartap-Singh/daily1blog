@@ -1,11 +1,10 @@
-import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
-import React, { Profiler, useEffect, useRef, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { db, storage } from "../../Firebase";
-import { addDoc, collection, serverTimestamp } from "firebase/firestore";
-import JoditEditor from "jodit-react";
 import MarkdownEditor from "@uiw/react-markdown-editor";
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
+import React, { useEffect, useRef, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { db, storage } from "../../Firebase";
 
 export default function PostBlog() {
   const navigate = useNavigate();

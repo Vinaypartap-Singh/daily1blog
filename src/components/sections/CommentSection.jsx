@@ -1,8 +1,8 @@
 import { doc, getDoc, onSnapshot, updateDoc } from "firebase/firestore";
-import { Heart, MessageCircle, UserCheck, Trash } from "lucide-react"; // Import the Trash icon
+import { Trash, UserCheck } from "lucide-react"; // Import the Trash icon
 import { useEffect, useState } from "react";
-import { db } from "../../../Firebase";
 import { toast } from "react-toastify";
+import { db } from "../../../Firebase";
 
 export default function CommentSection({ postId }) {
   const userId = localStorage.getItem("userId");

@@ -1,9 +1,9 @@
+import { doc, serverTimestamp, setDoc } from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { db, storage } from "../../Firebase";
-import { doc, serverTimestamp, setDoc } from "firebase/firestore";
 import { toast } from "react-toastify";
+import { db, storage } from "../../Firebase";
 
 export default function UploadAuthorProfile() {
   const initialData = {

@@ -7,10 +7,9 @@ import {
   where,
 } from "firebase/firestore";
 import React, { useMemo, useState } from "react";
-import { useParams } from "react-router-dom";
-import { db } from "../../Firebase";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
+import { db } from "../../Firebase";
 
 export default function AuthorProfileData() {
   const { id } = useParams();

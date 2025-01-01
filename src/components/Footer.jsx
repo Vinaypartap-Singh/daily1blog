@@ -1,4 +1,3 @@
-import Logo from "../assets/Images/Logo.svg";
 import { Link } from "react-router-dom";
 
 export default function Footer() {

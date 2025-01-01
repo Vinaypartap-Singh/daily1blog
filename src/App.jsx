@@ -1,20 +1,20 @@
 import React from "react";
-import Header from "./components/Header";
-import { Routes, Route, useNavigate, Navigate } from "react-router-dom";
-import HomePage from "./Pages/HomePage";
-import SignUp from "./Pages/SignUp";
-import LogIn from "./Pages/Login";
-import { AuthContextProvider } from "./context/AuthContext";
-import PostBlog from "./Pages/PostBlog";
-import ReadBlog from "./components/sections/ReadBlog";
-import Authors from "./Pages/Authors";
+import { Route, Routes } from "react-router-dom";
 import UploadAuthorProfile from "./Pages/AuthorProfile";
 import AuthorProfileData from "./Pages/AuthorProfileData";
-import BlogsSection from "./components/sections/BlogsSection.jsx";
+import Authors from "./Pages/Authors";
+import HomePage from "./Pages/HomePage";
+import LogIn from "./Pages/Login";
+import PostBlog from "./Pages/PostBlog";
+import SignUp from "./Pages/SignUp";
 import Footer from "./components/Footer.jsx";
+import Header from "./components/Header";
 import { MobileNavbar } from "./components/MobileHeader.jsx";
+import BlogsSection from "./components/sections/BlogsSection.jsx";
 import CategorySection from "./components/sections/Category.jsx";
 import CategoryItem from "./components/sections/CategoryItem.jsx";
+import ReadBlog from "./components/sections/ReadBlog";
+import { AuthContextProvider } from "./context/AuthContext";
 
 export default function App() {
   return (

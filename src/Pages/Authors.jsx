@@ -1,7 +1,7 @@
 import { collection, onSnapshot, query } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
-import { db } from "../../Firebase";
 import { Link } from "react-router-dom";
+import { db } from "../../Firebase";
 
 export default function Authors() {
   const [authors, setAuthors] = useState([]);

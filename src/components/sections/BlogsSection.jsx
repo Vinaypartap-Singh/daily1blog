@@ -1,6 +1,3 @@
-import React, { useEffect, useState } from "react";
-import { db } from "../../../Firebase";
-import { Link } from "react-router-dom";
 import {
   arrayUnion,
   collection,
@@ -13,10 +10,13 @@ import {
   query,
   updateDoc,
 } from "firebase/firestore";
-import { ArrowUp10, ArrowDown01 } from "lucide-react";
+import { ArrowDown01, ArrowUp10 } from "lucide-react";
+import React, { useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
-import BlogSkelton from "../Skeleton/BlogSkeleton";
+import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
+import { db } from "../../../Firebase";
+import BlogSkelton from "../Skeleton/BlogSkeleton";
 
 export default function BlogsSection({ showHeader = false }) {
   const [blogs, setBlogs] = useState([]);

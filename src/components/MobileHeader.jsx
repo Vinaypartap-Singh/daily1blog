@@ -1,17 +1,16 @@
-import React from "react";
 import {
-  Navbar,
-  MobileNav,
-  Typography,
   Button,
-  IconButton,
   Collapse,
+  IconButton,
+  Navbar,
+  Typography,
 } from "@material-tailwind/react";
-import { Link, useNavigate } from "react-router-dom";
 import { signOut } from "firebase/auth";
+import React from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import { auth } from "../../Firebase";
 import { navItems } from "./Header";
-import { toast } from "react-toastify";
 
 export function MobileNavbar() {
   const [openNav, setOpenNav] = React.useState(false);
@@ -43,10 +42,6 @@ export function MobileNavbar() {
       console.log(error);
     }
   };
-
-  const navList = (
-    <ul className="mt-2 mb-4 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6"></ul>
-  );
 
   return (
     <Navbar

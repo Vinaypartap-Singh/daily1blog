@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import HeroImage from "../../assets/Images/D1BHERO.svg";
 
 export default function HeroBlog() {

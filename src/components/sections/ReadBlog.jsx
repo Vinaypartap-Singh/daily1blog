@@ -1,11 +1,11 @@
+import { doc, getDoc } from "firebase/firestore";
+import "highlight.js/styles/github.css"; // Import highlight.js styles
 import React, { useEffect, useState } from "react";
+import ReactMarkdown from "react-markdown"; // Import react-markdown
 import { Link, useParams } from "react-router-dom";
-import { doc, getDoc, onSnapshot } from "firebase/firestore";
+import rehypeHighlight from "rehype-highlight"; // Syntax highlighting
 import { db } from "../../../Firebase";
 import CommentSection from "./CommentSection";
-import ReactMarkdown from "react-markdown"; // Import react-markdown
-import rehypeHighlight from "rehype-highlight"; // Syntax highlighting
-import "highlight.js/styles/github.css"; // Import highlight.js styles
 
 export default function ReadBlog() {
   const { id } = useParams();

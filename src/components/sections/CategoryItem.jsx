@@ -1,11 +1,10 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { ArrowUp10, ArrowDown01, Album } from "lucide-react";
-import ReactMarkdown from "react-markdown";
-import BlogSkelton from "../Skeleton/BlogSkeleton";
-import { Link } from "react-router-dom";
 import { collection, onSnapshot, query, where } from "firebase/firestore";
+import { Album, ArrowDown01, ArrowUp10 } from "lucide-react";
+import { useEffect, useState } from "react";
+import ReactMarkdown from "react-markdown";
+import { Link, useParams } from "react-router-dom";
 import { db } from "../../../Firebase";
+import BlogSkelton from "../Skeleton/BlogSkeleton";
 
 export default function CategoryItem() {
   const { id } = useParams();
