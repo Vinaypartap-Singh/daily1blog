@@ -89,6 +89,14 @@ export default function Header() {
                 </Link>
               );
             })}
+
+            <Link
+              to={"https://thought-wave-vinay.vercel.app/"}
+              target="_blank"
+              className="text-white mr-5 hover:text-white"
+            >
+              Thought Wave
+            </Link>
           </nav>
 
           {user && (
