@@ -1,6 +1,6 @@
 import { signOut } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { auth, db } from "../../Firebase";
@@ -9,10 +9,6 @@ export const navItems = [
   {
     name: "Home",
     link: "/",
-  },
-  {
-    name: "Blogs",
-    link: "/blogs",
   },
   {
     name: "Categories",

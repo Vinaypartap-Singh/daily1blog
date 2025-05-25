@@ -11,7 +11,7 @@ import {
   updateDoc,
 } from "firebase/firestore";
 import { ArrowDown01, ArrowUp10 } from "lucide-react";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -164,15 +164,15 @@ export default function BlogsSection({ showHeader = false }) {
 
                 return (
                   <div className="p-4 md:w-1/3 w-full" key={data.id}>
-                    <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
+                    <div className="h-full [box-shadow:0_4px_12px_rgba(0,0,0,0.05)] bg-white rounded-lg overflow-hidden">
                       <img
-                        className="h-48 md:h-36 w-full object-cover object-center"
+                        className="h-64 rounded-md md:h-64 w-full object-cover object-center"
                         src={data.imgURL}
                         alt="blog"
                         loading="lazy"
                       />
                       <div className="p-6">
-                        <h2 className="bg-orange-400 text-white mb-4 w-fit px-5 py-2 tracking-widest text-xs title-font font-medium ">
+                        <h2 className="bg-orange-400 rounded-md text-white mb-4 w-fit px-5 py-2 tracking-widest text-xs title-font font-medium ">
                           {data.category}
                         </h2>
                         <h1 className="title-font text-lg font-medium text-gray-900 mb-3 title">
