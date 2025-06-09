@@ -6,13 +6,24 @@
   font-family: playfair;
   src: url("./assets/font/playfairDisplay.woff2");
 }
+
 @font-face {
   font-family: sora;
   src: url("./assets/font/soraFont.woff2");
 }
 
+@font-face {
+  font-family: syne;
+  src: url("./assets/font/syne/syne.woff2");
+}
+
+@font-face {
+  font-family: nunito;
+  src: url("./assets/font/nunito/Nunito.woff2");
+}
+
 body {
-  font-family: sora;
+  font-family: nunito;
 }
 
 .max-width-content {
