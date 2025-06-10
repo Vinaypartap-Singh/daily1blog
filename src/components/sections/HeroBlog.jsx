@@ -1,4 +1,3 @@
-import React from "react";
 import { useNavigate } from "react-router-dom";
 import HeroImage from "../../assets/Images/D1BHERO.svg";
 
@@ -41,7 +40,7 @@ export default function HeroBlog() {
                 Read Blogs
               </p>
             </button>
-            <button
+            {/* <button
               onClick={() => navigate("/authors")}
               className="ml-0 mt-3 sm:mt-0 sm:ml-10 group relative font-heading px-10 py-5 w-full lg:w-auto uppercase text-white text-xs font-semibold tracking-px bg-gray-900 overflow-hidden rounded-md"
             >
@@ -52,7 +51,7 @@ export default function HeroBlog() {
               >
                 Authors
               </button>
-            </button>
+            </button> */}
           </div>
         </div>
         <div className="w-full lg:w-1/2 p-6">
